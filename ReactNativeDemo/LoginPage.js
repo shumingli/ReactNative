@@ -14,24 +14,26 @@ export default class LoginPage extends Component {
   constructor(props){
     super(props);
     this.state = {
-       phoneNumber : "0"
+       phoneNumber : "0",
+       password: '0'
     }
-    this.onNextPress = this.onNextPress.bind(this);
+    // this.onLoginPress = this.onLoginPress.bind(this); //函数绑定
   }
 
-  _navigate(name,phoneNumber,type='Normal'){
+  _navigate(name,phoneNumber,pwd,type='Normal'){
     this.props.navigator.push({
       component: HomePage,
       passProps: {
         name: name,
-        phoneNumber: phoneNumber
+        phoneNumber: phoneNumber,
+        pwd: pwd,
       },
       type: type
     })
   }
 
-  onNextPress = () => {
-     this._navigate('首页',this.state.phoneNumber);
+  onLoginPress = () => {
+     this._navigate('首页',this.state.phoneNumber,this.state.password);
   };
 
   render() {
@@ -50,10 +52,15 @@ export default class LoginPage extends Component {
           placeholder="请输入手机号" />
         </View>
         <View style={styles.line} />
-        <TextInput style={styles.tiPwd} placeholder="请输入6-16位密码" />
+        <TextInput onChangeText={
+            (text) =>{
+              this.state.password = text;
+            }}
+          style={styles.tiPwd} 
+          placeholder="请输入6-16位密码" />
         <View style={styles.line} />
       
-        <TouchableOpacity onPress={this.onNextPress}>
+        <TouchableOpacity onPress={this.onLoginPress}>
           <View style={styles.loginBtn}>
             <Text style={styles.loginText}>登录</Text>
           </View>

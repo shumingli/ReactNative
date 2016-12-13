@@ -27,7 +27,10 @@ export default class HomePage extends Component {
 				</View>
 				<View style={styles.content}>
 					<Text style={styles.contentText}>
-						{this.props.phoneNumber}
+						账号：{this.props.phoneNumber}
+					</Text>
+					<Text style={styles.contentText}>
+						密码：{this.props.pwd}
 					</Text>
 				</View>
 			</View>
