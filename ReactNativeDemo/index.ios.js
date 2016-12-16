@@ -10,7 +10,9 @@ import {
   Navigator,
 } from 'react-native';
 
-var LoginPage = require('./LoginPage.js');
+// var LoginPage = require('./LoginPage.js');
+// var HomePage = require('./homePage.js');
+var MainPage = require('./mainPage.js');
 
 export default class ReactNativeDemo extends Component {
   renderScene(route,navigator){
@@ -19,15 +21,15 @@ export default class ReactNativeDemo extends Component {
 
   configureScene(route,routeStack){
     if (route.type == 'Bottom') {
-      return Navigator.SceneConfigs.FloatFromBottom;
+      return Navigator.SceneConfigs.FloatFromBottom; //从底部进入
     };
-    return Navigator.SceneConfigs.PushFromRight;
+    return Navigator.SceneConfigs.PushFromRight;  //从右侧进入
   }
 
   render(){
     return(<Navigator 
       style={{flex:1}} 
-      initialRoute={{component:LoginPage}}
+      initialRoute={{component:MainPage}}
       configureScene={this.configureScene}
       renderScene={this.renderScene}/>);
   }
